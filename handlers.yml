@@ -1,0 +1,13 @@
+--- # Handlers Playbook
+- hosts: web
+  user: vinod
+  become: yes
+  connection: ssh
+  tasks: 
+      - name: Install httpd server
+        action: yum name=httpd state=present
+        notify:
+          - Restart Apache
+  handlers: 
+     - name: Restart apache
+       action: service name=httpd state=restarted    

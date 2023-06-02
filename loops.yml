@@ -1,0 +1,13 @@
+--- # Loops Playbook
+- hosts: web
+  user: vinod
+  become: yes
+  connection: ssh
+  tasks: 
+    - name: Add list of users on managed nodes
+      user: name="{{item}}" state=present
+      with_items: 
+          - ravi
+          - sameer
+          - shruti
+          - senapati 
